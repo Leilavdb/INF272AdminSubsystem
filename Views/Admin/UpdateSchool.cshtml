@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEducator</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+
+    <h2 style="padding-left:5%">Update School</h2>
+
+    <div class="form-group" style="padding-left:5%; padding-right:5%">
+        @using (Html.BeginForm("SchoolUpdated", "Admin", FormMethod.Post))
+        {
+            @Html.Hidden("SchoolID", (int)ViewBag.Id, new { @class = "form-control" })
+            <label>Name: </label>
+            @Html.TextBox("SchoolName", (string)ViewBag.Name, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Email Address: </label>
+            @Html.TextBox("Email", (string)ViewBag.Email, new { @class = "form_control", @type = "text" }) <br />
+
+            <label>Phone Number: </label>
+            @Html.TextBox("PhoneNumber", (string)ViewBag.Phone, new { @class = "form_control", @type = "text" }) <br />
+
+            <label>Physical Address: </label>
+            @Html.TextBox("Address", (string)ViewBag.Address, new { @class = "form_control", @type = "text" }) <br />
+
+            <button type="submit" class="btn btn-primary">Update School</button>
+            <a href="@Url.Action("CancelUpdateSchool", "Admin", new { id = ViewBag.Id })" class="btn btn-primary">Cancel</a>
+        }
+    </div>
+</body>
+</html>

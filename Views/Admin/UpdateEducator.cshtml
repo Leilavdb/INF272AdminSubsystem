@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEducator</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <h1 style="color: crimson">@ViewBag.Message</h1>
+    <h2 style="padding-left:5%">Update Expert</h2>
+
+    <div class="form-group" style="padding-left:5%; padding-right:5%">
+        @using (Html.BeginForm("EducatorUpdated", "Admin", FormMethod.Post))
+        {
+
+            @Html.Hidden("ExpertID", (int)ViewBag.ExpertId, new { @class = "form-control" })
+            @Html.Hidden("UserID", (int)ViewBag.UserId, new { @class = "form-control" })
+
+            <label>Name: </label>
+
+            @Html.TextBox("ExpertName", (string)ViewBag.FirstName, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Surname: </label>
+            @Html.TextBox("ExpertSurname", (string)ViewBag.Surname, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Module Type:</label>
+            @Html.DropDownList("ModuleId", new SelectList(ViewBag.Modules, "Module_ID", "Module_Name"), "Select Module", new { @class = "form-control" });
+
+            <button type="submit" class="btn btn-primary">UpdateExpert</button>
+            <a href="@Url.Action("CancelUpdateEducator", "Admin")" class="btn btn-primary">Cancel</a>
+        }
+    </div>
+</body>
+</html>

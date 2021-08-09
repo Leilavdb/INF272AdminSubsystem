@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Teacher";
+}
+
+@*Form to search Teachers*@
+<div class="form-inline" style="padding-bottom:25px">
+
+
+    @using (Html.BeginForm("Teacher", "Admin", FormMethod.Post))
+    {
+        @Html.TextBox("SearchCriteria", null, new { @class = "form_control", @type = "text" })
+        <button type="submit" class="btn btn-primary">Search</button>
+    }
+
+
+</div>
+
+@*Button to add teacher*@
+<div style="padding-bottom:25px">
+    <a href="@Url.Action("AddTeacher", "Admin")" class="btn btn-primary">Add Teacher</a>
+</div>
+
+
+@*Dropdown to sort teacher table by specified attribute*@
+<p><b>Sort by:</b></p>
+@*<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Sort by:
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">*@
+<a class="dropdown-item" href="@Url.Action("Teacher", "Admin", new {sortOrder = "UserId" })">User ID</a>
+<a class="dropdown-item" href="@Url.Action("Teacher", "Admin", new {sortOrder = "Surname" })">Surname</a>
+@*</div>
+    </div>*@
+
+<br />
+<a href="@Url.Action("Teacher", "Admin", new { showPassword = "Show"} )" class="btn btn-primary">Show Passwords</a>
+<a href="@Url.Action("Teacher", "Admin", new { showPassword = "Hide"} )" class="btn btn-primary">Hide Passwords</a>
+<br />
+@*Table to display the teachers in the Teacher Table*@
+<h2>Teacher</h2>
+<table class="table">
+    <tr>
+        <th>UserID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Password</th>
+        <th>School</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (INF272AdminSubsystem.ViewModels.TeacherVM t in ViewBag.Teachers)
+    {
+<tr>
+    <td>@t.UserId </td>
+    <td>@t.UserName </td>
+    <td>@t.UserSurname </td>
+    @if (ViewBag.Show == false || ViewBag.Show == null)
+    {
+        <td> </td>
+
+    }
+    @if (ViewBag.Show == true)
+    {
+
+        <td>@t.UserPassword</td>
+    }
+    <td>@t.SchoolName </td>
+    <td> <a href="@Url.Action("DeleteTeacher", "Admin", new {id = t.TeacherId })" class="btn btn-primary">Delete</a></td>
+    <td> <a href="@Url.Action("UpdateTeacher", "Admin", new {id = t.TeacherId })" class="btn btn-primary">Update</a></td>
+</tr>
+    }
+
+
+</table>
+

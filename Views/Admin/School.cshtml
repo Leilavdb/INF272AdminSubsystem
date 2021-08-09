@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "School";
+}
+@*Form to search Schools*@
+
+<div class="form-inline" style="padding-bottom:25px">
+    @using (Html.BeginForm("School", "Admin", FormMethod.Post))
+    {
+        @Html.TextBox("SearchCriteria", null, new { @class = "form_control", @type = "text" })
+        <button type="submit" class="btn btn-primary">Search</button>
+    }
+
+</div>
+
+@*Button to add School*@
+<div style="padding-bottom:25px">
+    <a href="@Url.Action("AddSchool", "Admin")" class="btn btn-primary">Add School</a>
+</div>
+
+@*Dropdown to sort school table by specified attribute*@
+<p><b>Sort by:</b></p>
+@*<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Sort by:
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">*@
+        <a class="dropdown-item" href="@Url.Action("School", "Admin", new { sortOrder = "ByID"})">ID</a>
+        <a class="dropdown-item" href="@Url.Action("School", "Admin", new { sortOrder = "ByName"})">School Name</a>
+    @*</div>
+</div>*@
+<br />
+
+@*Table to display the schools in the school Table*@
+<h2>School</h2>
+<table class="table">
+    <tr>
+        <th>School ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (INF272AdminSubsystem.Models.School s in ViewBag.Schools)
+    {
+        <tr>
+            <td> @s.School_ID </td>
+            <td> @s.School_Name</td>
+            <td> @s.School_Address</td>
+            <td> @s.School_Email</td>
+            <td> @s.School_Phone</td>
+            <td> <a href="@Url.Action("DeleteSchool", "Admin", new {id = s.School_ID })" class="btn btn-primary">Delete</a></td>
+            <td> <a href="@Url.Action("UpdateSchool", "Admin",  new {id = s.School_ID })" class="btn btn-primary">Update</a></td>
+        </tr>
+    }
+   
+
+</table>
+

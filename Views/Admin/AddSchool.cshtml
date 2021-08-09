@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEducator</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+
+    <h2 style="padding-left:5%">Add a new School</h2>
+    <div class="form-group" style="padding-left:5%; padding-right:5%">
+        @using (Html.BeginForm("SchoolAdded", "Admin", FormMethod.Post))
+        {
+            <label>Name: </label>
+            @Html.TextBox("SchoolName", null, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Email Address: </label>
+            @Html.TextBox("Email", null, new { @class = "form_control", @type = "text" }) <br />
+
+            <label>Phone Number: </label>
+            @Html.TextBox("PhoneNumber", null, new { @class = "form_control", @type = "text" }) <br />
+
+            <label>Physical Address: </label>
+            @Html.TextBox("Address", null, new { @class = "form_control", @type = "text" }) <br />
+
+            <button type="submit" class="btn btn-primary">Add School</button>
+            <a href="@Url.Action("CancelAddSchool", "Admin")" class="btn btn-primary">Cancel</a>
+        }
+
+
+
+
+    </div>
+</body>
+</html>
+

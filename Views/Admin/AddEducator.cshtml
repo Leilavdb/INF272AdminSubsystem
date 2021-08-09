@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEducator</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+   
+    <h2 style="padding-left:5%">Add a new Expert</h2>
+
+   <div class="form-group" style="padding-left:5%; padding-right:5%">
+        @using (Html.BeginForm("EducatorAdded", "Admin", FormMethod.Post))
+
+        {
+            <label>Name: </label>
+            @Html.TextBox("ExpertName", null, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Surname: </label>
+            @Html.TextBox("ExpertSurname", null, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Module Type:</label>
+            @Html.DropDownList("ModuleId", new SelectList(ViewBag.Modules, "Module_ID", "Module_Name"), "Select Module", new { @class = "form-control" });
+
+            <button type="submit" class="btn btn-primary">Add Expert</button>
+            <a href="@Url.Action("CancelAddEducator", "Admin")" class="btn btn-primary">Cancel</a>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cancel</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <div>
+        <div style="padding-left:5%">
+            <h2>Are you sure you want to cancel?</h2>
+            <div class="form-inline">
+                <div style="padding-right:5%"> <a href="@Url.Action("School", "Admin")" class="btn btn-primary">Cancel</a></div>
+                <a href="@Url.Action("UpdateSchool", "Admin", new { id = ViewBag.id })" class="btn btn-primary">Go Back</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

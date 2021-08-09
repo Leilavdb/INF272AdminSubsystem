@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card-deck">
+   
+        <div class="card" style="background-color: #0C7CD1" >
+            <a href="@Url.Action("Educator", "Admin")">
+                <img class="card-img-top" src="~/Images/PersonIcon.PNG" alt="person icon"  />
+            </a>
+            <div class="card-body">
+                <p class="card-text" style="text-align:center; font-size: 24px">Experts</p>
+            </div>
+        </div>
+    
+    
+        <div class="card" style="background-color: #0C7CD1">
+            <a href="@Url.Action("School", "Admin")">
+                <img class="card-img-top" src="~/Images/SchoolIcon.PNG" alt="School icon" />
+            </a>
+            <div class="card-body">
+                <p class="card-text" style="text-align:center; font-size: 24px">Schools</p>
+            </div>
+        </div>
+    
+        <div class="card" style="background-color: #0C7CD1">
+            <a href="@Url.Action("Teacher", "Admin")">
+                <img class="card-img-top" src="~/Images/PersonIcon.PNG" alt="person icon"/>
+            </a>
+            <div class="card-body">
+                <p class="card-text" style="text-align:center; font-size: 24px">Teachers</p>
+            </div>
+       
+    </div>
+</div>

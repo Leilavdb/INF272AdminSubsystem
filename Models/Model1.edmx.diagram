@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="00d3e8f924aa40efada292fa410a61ff" Name="Diagram1" ZoomLevel="150">
+        <EntityTypeShape EntityType="ProjectModel.Expert" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.ExpertModule" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.LearningMaterial" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.LearningMaterialType" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.Mark" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.Memo" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.Module" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.ModuleStudent" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.PasswordHistory" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.School" Width="1.5" PointX="3.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.Student" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.SystemAdmin" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.SystemUser" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.Teacher" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.Test" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectModel.TestType" Width="1.5" PointX="0.75" PointY="22.25" IsExpanded="true" />
+        <AssociationConnector Association="ProjectModel.FK__Expert__SystemUs__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__ExpertMod__Exper__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__ExpertMod__Modul__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__LearningM__Learn__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__LearningM__Modul__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Marks__Student_I__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Marks__Test_ID__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Memo__Test_ID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__ModuleStu__Modul__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Test__Module_ID__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__ModuleStu__Stude__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__PasswordH__Syste__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Student__School___1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Teacher__School___182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Student__SystemU__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__SystemAdm__Syste__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Teacher__SystemU__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectModel.FK__Test__Test_Type___35BCFE0A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

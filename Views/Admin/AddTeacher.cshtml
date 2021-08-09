@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEducator</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+
+    <h2 style="padding-left:5%">Add a new Teacher</h2>
+
+    <div class="form-group" style="padding-left:5%; padding-right:5%">
+        @using (Html.BeginForm("TeacherAdded", "Admin", FormMethod.Post))
+
+        {
+            <label>Name: </label>
+            @Html.TextBox("TeacherName", null, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Surname: </label>
+            @Html.TextBox("TeacherSurname", null, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Module Type:</label>
+            @Html.DropDownList("School_ID", new SelectList(ViewBag.Schools, "School_ID", "School_Name"), "Select School", new { @class = "form-control" });
+
+            <button type="submit" class="btn btn-primary">Add Teacher</button>
+            <a href="@Url.Action("CancelAddTeacher", "Admin")" class="btn btn-primary">Cancel</a>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEducator</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+
+    <h2 style="padding-left:5%">Update Teacher</h2>
+
+    <div class="form-group" style="padding-left:5%; padding-right:5%">
+        @using (Html.BeginForm("TeacherUpdated", "Admin", FormMethod.Post))
+        {
+
+            @Html.Hidden("TeacherId", (int)ViewBag.TeacherId, new { @class = "form-control" })
+
+            <label>Name: </label>
+
+            @Html.TextBox("Name", (string)ViewBag.Name, new { @class = "form_control", @type = "text" })<br />
+
+            <label>Surname: </label>
+            @Html.TextBox("Surname", (string)ViewBag.Surname, new { @class = "form_control", @type = "text" })<br />
+
+            <label>School:</label>
+            @Html.DropDownList("SchoolId", new SelectList(ViewBag.Schools, "School_ID", "School_Name"), "Select School", new { @class = "form-control" });
+
+            <button type="submit" class="btn btn-primary">Update Teacher</button>
+            <a href="@Url.Action("CancelUpdateTeacher", "Admin", new { id = ViewBag.TeacherId })" class="btn btn-primary">Cancel</a>
+        }
+    </div>
+</body>
+</html>

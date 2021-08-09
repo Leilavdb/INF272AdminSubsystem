@@ -1,0 +1,1114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Expert">
+          <Key>
+            <PropertyRef Name="Expert_ID" />
+          </Key>
+          <Property Name="Expert_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemUser_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ExpertModule">
+          <Key>
+            <PropertyRef Name="Expert_Module_ID" />
+          </Key>
+          <Property Name="Expert_Module_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Expert_ID" Type="int" />
+          <Property Name="Module_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="LearningMaterial">
+          <Key>
+            <PropertyRef Name="Learning_Material_ID" />
+          </Key>
+          <Property Name="Learning_Material_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Learning_Material_Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Learning_Matterial_Type_ID" Type="int" />
+          <Property Name="Module_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="LearningMaterialType">
+          <Key>
+            <PropertyRef Name="Learning_Matterial_Type_ID" />
+          </Key>
+          <Property Name="Learning_Matterial_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Learning_Material_Description" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marks">
+          <Key>
+            <PropertyRef Name="Marks_ID" />
+          </Key>
+          <Property Name="Marks_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mark_Obtained" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Mark_Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Sympol" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Test_ID" Type="int" />
+          <Property Name="Student_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Memo">
+          <Key>
+            <PropertyRef Name="Memo_ID" />
+          </Key>
+          <Property Name="Memo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Memo_Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Test_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Module_ID" />
+          </Key>
+          <Property Name="Module_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Module_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Module_Description" Type="varchar" MaxLength="255" />
+          <Property Name="Module_Grade" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ModuleStudent">
+          <Key>
+            <PropertyRef Name="Module_Student_ID" />
+          </Key>
+          <Property Name="Module_Student_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Module_ID" Type="int" />
+          <Property Name="Student_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="PasswordHistory">
+          <Key>
+            <PropertyRef Name="Password_History_ID" />
+          </Key>
+          <Property Name="Password_History_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Previous_Password" Type="varchar" MaxLength="255" />
+          <Property Name="Current_Password" Type="varchar" MaxLength="255" />
+          <Property Name="SystemUser_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="School_ID" />
+          </Key>
+          <Property Name="School_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="School_Name" Type="varchar" MaxLength="255" />
+          <Property Name="School_Address" Type="varchar" MaxLength="255" />
+          <Property Name="School_Email" Type="varchar" MaxLength="255" />
+          <Property Name="School_Phone" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+          </Key>
+          <Property Name="Student_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemUser_ID" Type="int" />
+          <Property Name="School_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="SystemAdmin">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemUser_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="SystemUser_ID" />
+          </Key>
+          <Property Name="SystemUser_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemUser_Name" Type="varchar" MaxLength="255" />
+          <Property Name="SystemUserSurname" Type="varchar" MaxLength="255" />
+          <Property Name="SystemUser_Password" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Teacher_ID" />
+          </Key>
+          <Property Name="Teacher_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemUser_ID" Type="int" />
+          <Property Name="School_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Test_ID" />
+          </Key>
+          <Property Name="Test_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Test_Desccription" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Test_Date" Type="date" Nullable="false" />
+          <Property Name="Test_Total" Type="int" Nullable="false" />
+          <Property Name="Test_Type_ID" Type="int" />
+          <Property Name="Module_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TestType">
+          <Key>
+            <PropertyRef Name="Test_Type_ID" />
+          </Key>
+          <Property Name="Test_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Test_Type_Description" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Expert__SystemUs__1273C1CD">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="Expert" Type="Self.Expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="Expert">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExpertMod__Exper__267ABA7A">
+          <End Role="Expert" Type="Self.Expert" Multiplicity="0..1" />
+          <End Role="ExpertModule" Type="Self.ExpertModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expert">
+              <PropertyRef Name="Expert_ID" />
+            </Principal>
+            <Dependent Role="ExpertModule">
+              <PropertyRef Name="Expert_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExpertMod__Modul__276EDEB3">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="ExpertModule" Type="Self.ExpertModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="ExpertModule">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningM__Learn__300424B4">
+          <End Role="LearningMaterialType" Type="Self.LearningMaterialType" Multiplicity="0..1" />
+          <End Role="LearningMaterial" Type="Self.LearningMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningMaterialType">
+              <PropertyRef Name="Learning_Matterial_Type_ID" />
+            </Principal>
+            <Dependent Role="LearningMaterial">
+              <PropertyRef Name="Learning_Matterial_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningM__Modul__30F848ED">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="LearningMaterial" Type="Self.LearningMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="LearningMaterial">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__Student_I__3A81B327">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Marks" Type="Self.Marks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_ID" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="Student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__Test_ID__398D8EEE">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Marks" Type="Self.Marks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Test_ID" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="Test_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Memo__Test_ID__3D5E1FD2">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Memo" Type="Self.Memo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Test_ID" />
+            </Principal>
+            <Dependent Role="Memo">
+              <PropertyRef Name="Test_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ModuleStu__Modul__2A4B4B5E">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="ModuleStudent" Type="Self.ModuleStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="ModuleStudent">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ModuleStu__Stude__2B3F6F97">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="ModuleStudent" Type="Self.ModuleStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_ID" />
+            </Principal>
+            <Dependent Role="ModuleStudent">
+              <PropertyRef Name="Student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PasswordH__Syste__1B0907CE">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="PasswordHistory" Type="Self.PasswordHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="PasswordHistory">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__School___1ED998B2">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="School_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__SystemU__1DE57479">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SystemAdm__Syste__21B6055D">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="SystemAdmin" Type="Self.SystemAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="SystemAdmin">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher__School___182C9B23">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_ID" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="School_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher__SystemU__173876EA">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test__Module_ID__36B12243">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test__Test_Type___35BCFE0A">
+          <End Role="TestType" Type="Self.TestType" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestType">
+              <PropertyRef Name="Test_Type_ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Test_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectModelStoreContainer">
+          <EntitySet Name="Expert" EntityType="Self.Expert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpertModule" EntityType="Self.ExpertModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LearningMaterial" EntityType="Self.LearningMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LearningMaterialType" EntityType="Self.LearningMaterialType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marks" EntityType="Self.Marks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Memo" EntityType="Self.Memo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModuleStudent" EntityType="Self.ModuleStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasswordHistory" EntityType="Self.PasswordHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemAdmin" EntityType="Self.SystemAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemUser" EntityType="Self.SystemUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestType" EntityType="Self.TestType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Expert__SystemUs__1273C1CD" Association="Self.FK__Expert__SystemUs__1273C1CD">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Expert" EntitySet="Expert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExpertMod__Exper__267ABA7A" Association="Self.FK__ExpertMod__Exper__267ABA7A">
+            <End Role="Expert" EntitySet="Expert" />
+            <End Role="ExpertModule" EntitySet="ExpertModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExpertMod__Modul__276EDEB3" Association="Self.FK__ExpertMod__Modul__276EDEB3">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="ExpertModule" EntitySet="ExpertModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningM__Learn__300424B4" Association="Self.FK__LearningM__Learn__300424B4">
+            <End Role="LearningMaterialType" EntitySet="LearningMaterialType" />
+            <End Role="LearningMaterial" EntitySet="LearningMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningM__Modul__30F848ED" Association="Self.FK__LearningM__Modul__30F848ED">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="LearningMaterial" EntitySet="LearningMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__Student_I__3A81B327" Association="Self.FK__Marks__Student_I__3A81B327">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__Test_ID__398D8EEE" Association="Self.FK__Marks__Test_ID__398D8EEE">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Memo__Test_ID__3D5E1FD2" Association="Self.FK__Memo__Test_ID__3D5E1FD2">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Memo" EntitySet="Memo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModuleStu__Modul__2A4B4B5E" Association="Self.FK__ModuleStu__Modul__2A4B4B5E">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="ModuleStudent" EntitySet="ModuleStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModuleStu__Stude__2B3F6F97" Association="Self.FK__ModuleStu__Stude__2B3F6F97">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ModuleStudent" EntitySet="ModuleStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PasswordH__Syste__1B0907CE" Association="Self.FK__PasswordH__Syste__1B0907CE">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="PasswordHistory" EntitySet="PasswordHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__School___1ED998B2" Association="Self.FK__Student__School___1ED998B2">
+            <End Role="School" EntitySet="School" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__SystemU__1DE57479" Association="Self.FK__Student__SystemU__1DE57479">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SystemAdm__Syste__21B6055D" Association="Self.FK__SystemAdm__Syste__21B6055D">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="SystemAdmin" EntitySet="SystemAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher__School___182C9B23" Association="Self.FK__Teacher__School___182C9B23">
+            <End Role="School" EntitySet="School" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher__SystemU__173876EA" Association="Self.FK__Teacher__SystemU__173876EA">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test__Module_ID__36B12243" Association="Self.FK__Test__Module_ID__36B12243">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test__Test_Type___35BCFE0A" Association="Self.FK__Test__Test_Type___35BCFE0A">
+            <End Role="TestType" EntitySet="TestType" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Expert">
+          <Key>
+            <PropertyRef Name="Expert_ID" />
+          </Key>
+          <Property Name="Expert_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemUser_ID" Type="Int32" />
+          <NavigationProperty Name="SystemUser" Relationship="Self.FK__Expert__SystemUs__1273C1CD" FromRole="Expert" ToRole="SystemUser" />
+          <NavigationProperty Name="ExpertModules" Relationship="Self.FK__ExpertMod__Exper__267ABA7A" FromRole="Expert" ToRole="ExpertModule" />
+        </EntityType>
+        <EntityType Name="ExpertModule">
+          <Key>
+            <PropertyRef Name="Expert_Module_ID" />
+          </Key>
+          <Property Name="Expert_Module_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Expert_ID" Type="Int32" />
+          <Property Name="Module_ID" Type="Int32" />
+          <NavigationProperty Name="Expert" Relationship="Self.FK__ExpertMod__Exper__267ABA7A" FromRole="ExpertModule" ToRole="Expert" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__ExpertMod__Modul__276EDEB3" FromRole="ExpertModule" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="LearningMaterial">
+          <Key>
+            <PropertyRef Name="Learning_Material_ID" />
+          </Key>
+          <Property Name="Learning_Material_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Learning_Material_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Learning_Matterial_Type_ID" Type="Int32" />
+          <Property Name="Module_ID" Type="Int32" />
+          <NavigationProperty Name="LearningMaterialType" Relationship="Self.FK__LearningM__Learn__300424B4" FromRole="LearningMaterial" ToRole="LearningMaterialType" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__LearningM__Modul__30F848ED" FromRole="LearningMaterial" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="LearningMaterialType">
+          <Key>
+            <PropertyRef Name="Learning_Matterial_Type_ID" />
+          </Key>
+          <Property Name="Learning_Matterial_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Learning_Material_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LearningMaterials" Relationship="Self.FK__LearningM__Learn__300424B4" FromRole="LearningMaterialType" ToRole="LearningMaterial" />
+        </EntityType>
+        <EntityType Name="Mark">
+          <Key>
+            <PropertyRef Name="Marks_ID" />
+          </Key>
+          <Property Name="Marks_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mark_Obtained" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sympol" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Test_ID" Type="Int32" />
+          <Property Name="Student_ID" Type="Int32" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Marks__Student_I__3A81B327" FromRole="Marks" ToRole="Student" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Marks__Test_ID__398D8EEE" FromRole="Marks" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Memo">
+          <Key>
+            <PropertyRef Name="Memo_ID" />
+          </Key>
+          <Property Name="Memo_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Memo_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Test_ID" Type="Int32" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Memo__Test_ID__3D5E1FD2" FromRole="Memo" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Module_ID" />
+          </Key>
+          <Property Name="Module_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Module_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Module_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Module_Grade" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExpertModules" Relationship="Self.FK__ExpertMod__Modul__276EDEB3" FromRole="Module" ToRole="ExpertModule" />
+          <NavigationProperty Name="LearningMaterials" Relationship="Self.FK__LearningM__Modul__30F848ED" FromRole="Module" ToRole="LearningMaterial" />
+          <NavigationProperty Name="ModuleStudents" Relationship="Self.FK__ModuleStu__Modul__2A4B4B5E" FromRole="Module" ToRole="ModuleStudent" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK__Test__Module_ID__36B12243" FromRole="Module" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="ModuleStudent">
+          <Key>
+            <PropertyRef Name="Module_Student_ID" />
+          </Key>
+          <Property Name="Module_Student_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Module_ID" Type="Int32" />
+          <Property Name="Student_ID" Type="Int32" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__ModuleStu__Modul__2A4B4B5E" FromRole="ModuleStudent" ToRole="Module" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__ModuleStu__Stude__2B3F6F97" FromRole="ModuleStudent" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="PasswordHistory">
+          <Key>
+            <PropertyRef Name="Password_History_ID" />
+          </Key>
+          <Property Name="Password_History_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Previous_Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Current_Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SystemUser_ID" Type="Int32" />
+          <NavigationProperty Name="SystemUser" Relationship="Self.FK__PasswordH__Syste__1B0907CE" FromRole="PasswordHistory" ToRole="SystemUser" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="School_ID" />
+          </Key>
+          <Property Name="School_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="School_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="School_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="School_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="School_Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Student__School___1ED998B2" FromRole="School" ToRole="Student" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK__Teacher__School___182C9B23" FromRole="School" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+          </Key>
+          <Property Name="Student_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemUser_ID" Type="Int32" />
+          <Property Name="School_ID" Type="Int32" />
+          <NavigationProperty Name="Marks" Relationship="Self.FK__Marks__Student_I__3A81B327" FromRole="Student" ToRole="Marks" />
+          <NavigationProperty Name="ModuleStudents" Relationship="Self.FK__ModuleStu__Stude__2B3F6F97" FromRole="Student" ToRole="ModuleStudent" />
+          <NavigationProperty Name="School" Relationship="Self.FK__Student__School___1ED998B2" FromRole="Student" ToRole="School" />
+          <NavigationProperty Name="SystemUser" Relationship="Self.FK__Student__SystemU__1DE57479" FromRole="Student" ToRole="SystemUser" />
+        </EntityType>
+        <EntityType Name="SystemAdmin">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemUser_ID" Type="Int32" />
+          <NavigationProperty Name="SystemUser" Relationship="Self.FK__SystemAdm__Syste__21B6055D" FromRole="SystemAdmin" ToRole="SystemUser" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="SystemUser_ID" />
+          </Key>
+          <Property Name="SystemUser_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemUser_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SystemUserSurname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SystemUser_Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Experts" Relationship="Self.FK__Expert__SystemUs__1273C1CD" FromRole="SystemUser" ToRole="Expert" />
+          <NavigationProperty Name="PasswordHistories" Relationship="Self.FK__PasswordH__Syste__1B0907CE" FromRole="SystemUser" ToRole="PasswordHistory" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Student__SystemU__1DE57479" FromRole="SystemUser" ToRole="Student" />
+          <NavigationProperty Name="SystemAdmins" Relationship="Self.FK__SystemAdm__Syste__21B6055D" FromRole="SystemUser" ToRole="SystemAdmin" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK__Teacher__SystemU__173876EA" FromRole="SystemUser" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Teacher_ID" />
+          </Key>
+          <Property Name="Teacher_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemUser_ID" Type="Int32" />
+          <Property Name="School_ID" Type="Int32" />
+          <NavigationProperty Name="School" Relationship="Self.FK__Teacher__School___182C9B23" FromRole="Teacher" ToRole="School" />
+          <NavigationProperty Name="SystemUser" Relationship="Self.FK__Teacher__SystemU__173876EA" FromRole="Teacher" ToRole="SystemUser" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Test_ID" />
+          </Key>
+          <Property Name="Test_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Test_Desccription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Test_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Test_Total" Type="Int32" Nullable="false" />
+          <Property Name="Test_Type_ID" Type="Int32" />
+          <Property Name="Module_ID" Type="Int32" />
+          <NavigationProperty Name="Marks" Relationship="Self.FK__Marks__Test_ID__398D8EEE" FromRole="Test" ToRole="Marks" />
+          <NavigationProperty Name="Memos" Relationship="Self.FK__Memo__Test_ID__3D5E1FD2" FromRole="Test" ToRole="Memo" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__Test__Module_ID__36B12243" FromRole="Test" ToRole="Module" />
+          <NavigationProperty Name="TestType" Relationship="Self.FK__Test__Test_Type___35BCFE0A" FromRole="Test" ToRole="TestType" />
+        </EntityType>
+        <EntityType Name="TestType">
+          <Key>
+            <PropertyRef Name="Test_Type_ID" />
+          </Key>
+          <Property Name="Test_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Test_Type_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK__Test__Test_Type___35BCFE0A" FromRole="TestType" ToRole="Test" />
+        </EntityType>
+        <Association Name="FK__Expert__SystemUs__1273C1CD">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="Expert" Type="Self.Expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="Expert">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExpertMod__Exper__267ABA7A">
+          <End Role="Expert" Type="Self.Expert" Multiplicity="0..1" />
+          <End Role="ExpertModule" Type="Self.ExpertModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expert">
+              <PropertyRef Name="Expert_ID" />
+            </Principal>
+            <Dependent Role="ExpertModule">
+              <PropertyRef Name="Expert_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExpertMod__Modul__276EDEB3">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="ExpertModule" Type="Self.ExpertModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="ExpertModule">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningM__Learn__300424B4">
+          <End Role="LearningMaterialType" Type="Self.LearningMaterialType" Multiplicity="0..1" />
+          <End Role="LearningMaterial" Type="Self.LearningMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LearningMaterialType">
+              <PropertyRef Name="Learning_Matterial_Type_ID" />
+            </Principal>
+            <Dependent Role="LearningMaterial">
+              <PropertyRef Name="Learning_Matterial_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LearningM__Modul__30F848ED">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="LearningMaterial" Type="Self.LearningMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="LearningMaterial">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__Student_I__3A81B327">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Marks" Type="Self.Mark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_ID" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="Student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marks__Test_ID__398D8EEE">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Marks" Type="Self.Mark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Test_ID" />
+            </Principal>
+            <Dependent Role="Marks">
+              <PropertyRef Name="Test_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Memo__Test_ID__3D5E1FD2">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Memo" Type="Self.Memo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Test_ID" />
+            </Principal>
+            <Dependent Role="Memo">
+              <PropertyRef Name="Test_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ModuleStu__Modul__2A4B4B5E">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="ModuleStudent" Type="Self.ModuleStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="ModuleStudent">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test__Module_ID__36B12243">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ModuleStu__Stude__2B3F6F97">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="ModuleStudent" Type="Self.ModuleStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_ID" />
+            </Principal>
+            <Dependent Role="ModuleStudent">
+              <PropertyRef Name="Student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PasswordH__Syste__1B0907CE">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="PasswordHistory" Type="Self.PasswordHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="PasswordHistory">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__School___1ED998B2">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="School_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher__School___182C9B23">
+          <End Role="School" Type="Self.School" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="School_ID" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="School_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__SystemU__1DE57479">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SystemAdm__Syste__21B6055D">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="SystemAdmin" Type="Self.SystemAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="SystemAdmin">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher__SystemU__173876EA">
+          <End Role="SystemUser" Type="Self.SystemUser" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUser_ID" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="SystemUser_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test__Test_Type___35BCFE0A">
+          <End Role="TestType" Type="Self.TestType" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestType">
+              <PropertyRef Name="Test_Type_ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Test_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Experts" EntityType="Self.Expert" />
+          <EntitySet Name="ExpertModules" EntityType="Self.ExpertModule" />
+          <EntitySet Name="LearningMaterials" EntityType="Self.LearningMaterial" />
+          <EntitySet Name="LearningMaterialTypes" EntityType="Self.LearningMaterialType" />
+          <EntitySet Name="Marks" EntityType="Self.Mark" />
+          <EntitySet Name="Memos" EntityType="Self.Memo" />
+          <EntitySet Name="Modules" EntityType="Self.Module" />
+          <EntitySet Name="ModuleStudents" EntityType="Self.ModuleStudent" />
+          <EntitySet Name="PasswordHistories" EntityType="Self.PasswordHistory" />
+          <EntitySet Name="Schools" EntityType="Self.School" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="SystemAdmins" EntityType="Self.SystemAdmin" />
+          <EntitySet Name="SystemUsers" EntityType="Self.SystemUser" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="TestTypes" EntityType="Self.TestType" />
+          <AssociationSet Name="FK__Expert__SystemUs__1273C1CD" Association="Self.FK__Expert__SystemUs__1273C1CD">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Expert" EntitySet="Experts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExpertMod__Exper__267ABA7A" Association="Self.FK__ExpertMod__Exper__267ABA7A">
+            <End Role="Expert" EntitySet="Experts" />
+            <End Role="ExpertModule" EntitySet="ExpertModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExpertMod__Modul__276EDEB3" Association="Self.FK__ExpertMod__Modul__276EDEB3">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="ExpertModule" EntitySet="ExpertModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningM__Learn__300424B4" Association="Self.FK__LearningM__Learn__300424B4">
+            <End Role="LearningMaterialType" EntitySet="LearningMaterialTypes" />
+            <End Role="LearningMaterial" EntitySet="LearningMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LearningM__Modul__30F848ED" Association="Self.FK__LearningM__Modul__30F848ED">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="LearningMaterial" EntitySet="LearningMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__Student_I__3A81B327" Association="Self.FK__Marks__Student_I__3A81B327">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marks__Test_ID__398D8EEE" Association="Self.FK__Marks__Test_ID__398D8EEE">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="Marks" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Memo__Test_ID__3D5E1FD2" Association="Self.FK__Memo__Test_ID__3D5E1FD2">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="Memo" EntitySet="Memos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModuleStu__Modul__2A4B4B5E" Association="Self.FK__ModuleStu__Modul__2A4B4B5E">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="ModuleStudent" EntitySet="ModuleStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test__Module_ID__36B12243" Association="Self.FK__Test__Module_ID__36B12243">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModuleStu__Stude__2B3F6F97" Association="Self.FK__ModuleStu__Stude__2B3F6F97">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ModuleStudent" EntitySet="ModuleStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PasswordH__Syste__1B0907CE" Association="Self.FK__PasswordH__Syste__1B0907CE">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="PasswordHistory" EntitySet="PasswordHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__School___1ED998B2" Association="Self.FK__Student__School___1ED998B2">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher__School___182C9B23" Association="Self.FK__Teacher__School___182C9B23">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Teacher" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__SystemU__1DE57479" Association="Self.FK__Student__SystemU__1DE57479">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SystemAdm__Syste__21B6055D" Association="Self.FK__SystemAdm__Syste__21B6055D">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="SystemAdmin" EntitySet="SystemAdmins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher__SystemU__173876EA" Association="Self.FK__Teacher__SystemU__173876EA">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Teacher" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test__Test_Type___35BCFE0A" Association="Self.FK__Test__Test_Type___35BCFE0A">
+            <End Role="TestType" EntitySet="TestTypes" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectModelStoreContainer" CdmEntityContainer="ProjectEntities">
+          <EntitySetMapping Name="Experts">
+            <EntityTypeMapping TypeName="ProjectModel.Expert">
+              <MappingFragment StoreEntitySet="Expert">
+                <ScalarProperty Name="Expert_ID" ColumnName="Expert_ID" />
+                <ScalarProperty Name="SystemUser_ID" ColumnName="SystemUser_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpertModules">
+            <EntityTypeMapping TypeName="ProjectModel.ExpertModule">
+              <MappingFragment StoreEntitySet="ExpertModule">
+                <ScalarProperty Name="Expert_Module_ID" ColumnName="Expert_Module_ID" />
+                <ScalarProperty Name="Expert_ID" ColumnName="Expert_ID" />
+                <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LearningMaterials">
+            <EntityTypeMapping TypeName="ProjectModel.LearningMaterial">
+              <MappingFragment StoreEntitySet="LearningMaterial">
+                <ScalarProperty Name="Learning_Material_ID" ColumnName="Learning_Material_ID" />
+                <ScalarProperty Name="Learning_Material_Description" ColumnName="Learning_Material_Description" />
+                <ScalarProperty Name="Learning_Matterial_Type_ID" ColumnName="Learning_Matterial_Type_ID" />
+                <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LearningMaterialTypes">
+            <EntityTypeMapping TypeName="ProjectModel.LearningMaterialType">
+              <MappingFragment StoreEntitySet="LearningMaterialType">
+                <ScalarProperty Name="Learning_Matterial_Type_ID" ColumnName="Learning_Matterial_Type_ID" />
+                <ScalarProperty Name="Learning_Material_Description" ColumnName="Learning_Material_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marks">
+            <EntityTypeMapping TypeName="ProjectModel.Mark">
+              <MappingFragment StoreEntitySet="Marks">
+                <ScalarProperty Name="Marks_ID" ColumnName="Marks_ID" />
+                <ScalarProperty Name="Mark_Obtained" ColumnName="Mark_Obtained" />
+                <ScalarProperty Name="Mark_Description" ColumnName="Mark_Description" />
+                <ScalarProperty Name="Sympol" ColumnName="Sympol" />
+                <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Memos">
+            <EntityTypeMapping TypeName="ProjectModel.Memo">
+              <MappingFragment StoreEntitySet="Memo">
+                <ScalarProperty Name="Memo_ID" ColumnName="Memo_ID" />
+                <ScalarProperty Name="Memo_Description" ColumnName="Memo_Description" />
+                <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="ProjectModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+                <ScalarProperty Name="Module_Name" ColumnName="Module_Name" />
+                <ScalarProperty Name="Module_Description" ColumnName="Module_Description" />
+                <ScalarProperty Name="Module_Grade" ColumnName="Module_Grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuleStudents">
+            <EntityTypeMapping TypeName="ProjectModel.ModuleStudent">
+              <MappingFragment StoreEntitySet="ModuleStudent">
+                <ScalarProperty Name="Module_Student_ID" ColumnName="Module_Student_ID" />
+                <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordHistories">
+            <EntityTypeMapping TypeName="ProjectModel.PasswordHistory">
+              <MappingFragment StoreEntitySet="PasswordHistory">
+                <ScalarProperty Name="Password_History_ID" ColumnName="Password_History_ID" />
+                <ScalarProperty Name="Previous_Password" ColumnName="Previous_Password" />
+                <ScalarProperty Name="Current_Password" ColumnName="Current_Password" />
+                <ScalarProperty Name="SystemUser_ID" ColumnName="SystemUser_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schools">
+            <EntityTypeMapping TypeName="ProjectModel.School">
+              <MappingFragment StoreEntitySet="School">
+                <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+                <ScalarProperty Name="School_Name" ColumnName="School_Name" />
+                <ScalarProperty Name="School_Address" ColumnName="School_Address" />
+                <ScalarProperty Name="School_Email" ColumnName="School_Email" />
+                <ScalarProperty Name="School_Phone" ColumnName="School_Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="ProjectModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="SystemUser_ID" ColumnName="SystemUser_ID" />
+                <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemAdmins">
+            <EntityTypeMapping TypeName="ProjectModel.SystemAdmin">
+              <MappingFragment StoreEntitySet="SystemAdmin">
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+                <ScalarProperty Name="SystemUser_ID" ColumnName="SystemUser_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUsers">
+            <EntityTypeMapping TypeName="ProjectModel.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUser">
+                <ScalarProperty Name="SystemUser_ID" ColumnName="SystemUser_ID" />
+                <ScalarProperty Name="SystemUser_Name" ColumnName="SystemUser_Name" />
+                <ScalarProperty Name="SystemUserSurname" ColumnName="SystemUserSurname" />
+                <ScalarProperty Name="SystemUser_Password" ColumnName="SystemUser_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="ProjectModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+                <ScalarProperty Name="SystemUser_ID" ColumnName="SystemUser_ID" />
+                <ScalarProperty Name="School_ID" ColumnName="School_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="ProjectModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+                <ScalarProperty Name="Test_Desccription" ColumnName="Test_Desccription" />
+                <ScalarProperty Name="Test_Date" ColumnName="Test_Date" />
+                <ScalarProperty Name="Test_Total" ColumnName="Test_Total" />
+                <ScalarProperty Name="Test_Type_ID" ColumnName="Test_Type_ID" />
+                <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestTypes">
+            <EntityTypeMapping TypeName="ProjectModel.TestType">
+              <MappingFragment StoreEntitySet="TestType">
+                <ScalarProperty Name="Test_Type_ID" ColumnName="Test_Type_ID" />
+                <ScalarProperty Name="Test_Type_Description" ColumnName="Test_Type_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

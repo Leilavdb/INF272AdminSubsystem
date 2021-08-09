@@ -1,0 +1,82 @@
+﻿@model INF272AdminSubsystem.ViewModels.ExpertsVM
+@{
+    ViewBag.Title = "Educator";
+}
+
+@*Form to search Educators*@
+<div class="form-inline" style="padding-bottom:25px">
+    @using (Html.BeginForm("Educator", "Admin", FormMethod.Post))
+    {
+        @Html.TextBox("SearchCriteria", null, new { @class = "form_control", @type = "text" })
+        <button type="submit" class="btn btn-primary">Search</button>
+    }
+
+</div>
+
+@*Button to add Educator*@
+<div style="padding-bottom:25px">
+    <a href="@Url.Action("AddEducator", "Admin")" class="btn btn-primary">Add Expert</a>
+</div>
+
+@*Dropdown to sort educator table by specified attribute*@
+
+<p><b>Sort by:</b></p>
+@*<div class="dropdown" style="padding-bottom:25px">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort by:
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">*@
+<a class="dropdown-item" href="@Url.Action("Educator", "Admin", new { sortOrder = "SortById"})">User ID</a>
+<a class="dropdown-item" href="@Url.Action("Educator", "Admin", new { sortOrder = "SortBySurname"})">Surname</a>
+@*</div>
+    </div>*@
+
+<br />
+<a href="@Url.Action("Educator", "Admin", new { showPassword = "Show"} )" class="btn btn-primary">Show Passwords</a>
+<a href="@Url.Action("Educator", "Admin", new { showPassword = "Hide"} )" class="btn btn-primary">Hide Passwords</a>
+<br />
+
+@*Table to display the educators in the Educator Table*@
+<h2>Experts</h2>
+<table class="table">
+    <tr>
+        <th>UserID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Module</th>
+        <th>Password</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+    @foreach (INF272AdminSubsystem.ViewModels.ExpertsVM e in ViewBag.Experts)
+    {
+
+<tr>
+    <td>@e.UserId </td>
+    <td> @e.UserName </td>
+    <td>@e.UserSurname </td>
+    <td>@e.ModuleName </td>
+
+
+            @if (ViewBag.Show == false || ViewBag.Show == null)
+            {
+              <td> </td>
+
+            }
+            @if (ViewBag.Show == true)
+            {
+
+                <td> @e.UserPassword</td>  
+            }
+       
+
+
+        <td> <a href="@Url.Action("DeleteEducator", "Admin", new { expertid = e.ExpertId} )" class="btn btn-primary">Delete</a></td>
+        <td> <a href="@Url.Action("UpdateEducator", "Admin", new { id = e.ExpertId} )" class="btn btn-primary">Update</a></td>
+    </tr>
+    }
+
+</table>
+
+

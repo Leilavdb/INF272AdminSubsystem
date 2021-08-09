@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Home</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    
+    <nav class="navbar navbar-light navbar-expand-sm" style="background-color: #0C7CD1; color: white;">
+            
+                    <a class="navbar-brand" href="@Url.Action("Index", "AdminHome")">
+                        <img src="~/Images/EduPortLogo.PNG" alt="Site Logo" style="height: 80px;"/>
+                    </a>
+            
+                <ul class="navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "AdminHome", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li class="nav-item">@Html.ActionLink("Experts", "Educator", "Admin", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li class="nav-item">@Html.ActionLink("Schools", "School", "Admin", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li class="nav-item">@Html.ActionLink("Teachers", "Teacher", "Admin", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                </ul>   
+                
+
+            <div class="nav navbar-nav ml-auto">
+                <ul class="navbar-nav">
+                    <li class="nav-item"> @Html.ActionLink("My Profile", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li class="nav-item">@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                </ul>
+            </div>
+    </nav>
+   <br style="padding-bottom:20px"/>
+    <div class="container body-content">
+        <p style="color:red">@ViewBag.Message</p>
+        <div>@RenderBody()</div> 
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Admin Subsystem</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
